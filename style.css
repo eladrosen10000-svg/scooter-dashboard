@@ -1,0 +1,259 @@
+/* 1. Global Setup & Dark Theme Variables */
+:root {
+    --bg-main: #121318;
+    --bg-card: #1E1F25;
+    --text-primary: #FFFFFF;
+    --text-secondary: #9CA3AF;
+    --accent-blue: #3B82F6;
+    --accent-blue-hover: #2563EB;
+    --accent-red: #EF4444;
+    --accent-amber: #F59E0B;
+    --accent-gold: #FFD700;
+    --border-color: #374151;
+    --radius-lg: 16px;
+    --radius-md: 12px;
+    --radius-sm: 8px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: 16px;
+    /* Responsive layout optimized for vertical smartphone screens */
+    max-width: 480px; 
+    margin: 0 auto;
+    overflow-x: hidden;
+}
+
+/* 2. Top Status Bar */
+#status-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--bg-card);
+    padding: 12px 16px;
+    border-radius: var(--radius-lg);
+    margin-bottom: 24px;
+}
+
+.action-btn {
+    background-color: var(--accent-blue);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.status-indicators {
+    display: flex;
+    gap: 12px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Active status indicator: Blue during Active BLE connection */
+.connected {
+    color: var(--accent-blue);
+}
+
+.disconnected {
+    color: var(--accent-red);
+}
+
+/* 3. Main Speed Display */
+#main-speed-section {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+#speed-display {
+    font-size: 5rem;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 8px;
+    font-variant-numeric: tabular-nums; /* Keeps numbers from jumping around */
+}
+
+#speed-display .unit {
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+#odo-display {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* 4. Riding Modes segmented control */
+#modes-section {
+    display: flex;
+    background-color: var(--bg-card);
+    border-radius: 30px;
+    padding: 6px;
+    margin-bottom: 24px;
+    justify-content: space-between;
+}
+
+.mode-btn {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    padding: 12px 0;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 24px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/* Active state highlighted in vibrant blue */
+.mode-btn.active {
+    background-color: var(--accent-blue);
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* 5. Control Panel Grid */
+#control-panel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.control-btn {
+    background-color: var(--bg-card);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    padding: 16px;
+    border-radius: var(--radius-md);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+}
+
+/* Active Status Indicators */
+/* Red glowing border when Locked */
+.control-btn.locked {
+    border-color: var(--accent-red);
+    color: var(--accent-red);
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.2);
+}
+
+/* Amber for Police Mode */
+.control-btn.police-active {
+    border-color: var(--accent-amber);
+    color: var(--accent-amber);
+    box-shadow: 0 0 10px rgba(245, 158, 11, 0.2);
+}
+
+/* 6. Wheelie Tracker Dashboard Card */
+.card {
+    background-color: var(--bg-card);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    margin-bottom: 24px;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.card h3 {
+    margin-bottom: 16px;
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+}
+
+.wheelie-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+}
+
+.badge {
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.badge-resting {
+    background-color: #374151;
+    color: var(--text-secondary);
+}
+
+/* Dynamic highlight when a wheelie is triggered */
+.wheelie-active {
+    border-color: var(--accent-gold);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+}
+
+.wheelie-active .badge {
+    background-color: var(--accent-gold);
+    color: var(--bg-main);
+}
+
+.timer {
+    font-size: 2rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+
+.best-score {
+    color: var(--accent-gold);
+    font-weight: 600;
+}
+
+/* 7. Bottom panel */
+#bottom-panel {
+    margin-top: auto;
+    background-color: var(--bg-card);
+    padding: 16px;
+    border-radius: var(--radius-lg);
+}
+
+.settings {
+    margin-bottom: 12px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.debug-console label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+#debug-log {
+    width: 100%;
+    background-color: #000;
+    color: #10B981; /* Terminal green */
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    padding: 8px;
+    font-family: monospace;
+    font-size: 0.75rem;
+    resize: none;
+}

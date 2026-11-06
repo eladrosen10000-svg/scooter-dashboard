@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Scooter Dashboard</title>
+    <!-- Link to the external CSS file -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Top Status Bar -->
+    <header id="status-bar">
+        <button id="btn-scan" class="action-btn">Scan Bluetooth</button>
+        <div class="status-indicators">
+            <span id="conn-indicator" class="disconnected">🔴 Disconnected</span>
+            <span id="battery-voltage">0.0V</span>
+            <span id="battery-percent">0% 🔋</span>
+        </div>
+    </header>
+
+    <main>
+        <!-- Main Speed & ODO Display -->
+        <section id="main-speed-section">
+            <h1 id="speed-display">0.0 <span class="unit">km/h</span></h1>
+            <h2 id="odo-display">ODO: 0.0 km</h2>
+        </section>
+
+        <!-- Riding Modes Selector -->
+        <section id="modes-section">
+            <button id="btn-mode-spt" class="mode-btn">SPT</button>
+            <button id="btn-mode-drv" class="mode-btn">DRV</button>
+            <button id="btn-mode-eco" class="mode-btn">ECO</button>
+            <button id="btn-mode-ped" class="mode-btn">🚶</button>
+        </section>
+
+        <!-- Control Panel Grid -->
+        <section id="control-panel">
+            <button id="btn-lock" class="control-btn">🔒 Lock / Unlock</button>
+            <button id="btn-police" class="control-btn">🚓 Police Mode (20km/h)</button>
+            <button id="btn-pin" class="control-btn">🔢 Gear Pin Lock</button>
+            <button id="btn-drag" class="control-btn">⏱️ Speed Drag Timer</button>
+            <button id="btn-reset" class="control-btn">⚙️ Reset ODO</button>
+        </section>
+
+        <!-- Wheelie Tracker Dashboard Card -->
+        <section id="wheelie-tracker" class="card">
+            <h3>Wheelie Tracker</h3>
+            <div class="wheelie-stats">
+                <p>Pitch Angle: <span id="pitch-angle">0°</span></p>
+                <div id="wheelie-status" class="badge badge-resting">RESTING</div>
+                <p class="timer">Active Timer: <span id="wheelie-timer">0.0s</span></p>
+                <p class="best-score">Personal Best: <span id="wheelie-best">0.0s</span></p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Bottom Panel (Connection Settings & Debug Console) -->
+    <footer id="bottom-panel">
+        <div class="settings">
+            <label>
+                <input type="checkbox" id="toggle-auto-reconnect"> Auto-Reconnect
+            </label>
+        </div>
+        <div class="debug-console">
+            <label for="debug-log">Debug Log:</label>
+            <textarea id="debug-log" rows="4" readonly></textarea>
+        </div>
+    </footer>
+
+    <!-- Link to the external JavaScript files -->
+    <script src="ble.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
